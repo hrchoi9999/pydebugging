@@ -41,6 +41,36 @@ st.markdown(
         padding: 12px 0;
         border-bottom: 1px solid rgba(128, 128, 128, 0.25);
     }
+    .page-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin: 8px 0 28px;
+    }
+    .page-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        color: white;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    }
+    .lotto-logo {
+        background: linear-gradient(135deg, #f2b705, #eb5757);
+    }
+    .debug-logo {
+        background: linear-gradient(135deg, #2f80ed, #27ae60);
+    }
+    .page-title h1 {
+        margin: 0;
+        padding: 0;
+    }
+    .title-spacer {
+        height: 18px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -142,8 +172,17 @@ def render_lotto_tab():
     if "lotto_history" not in st.session_state:
         st.session_state.lotto_history = []
 
-    st.title("로또 6/45 생성기")
+    st.markdown(
+        """
+        <div class="page-title">
+            <div class="page-logo lotto-logo">🎟️</div>
+            <h1>로또 6/45 생성기</h1>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     st.caption("버튼을 누르면 1부터 45까지의 숫자 중 6개를 무작위로 뽑아 저장합니다.")
+    st.markdown('<div class="title-spacer"></div>', unsafe_allow_html=True)
 
     if st.button("로또 번호 생성", type="primary"):
         numbers = sorted(random.sample(range(1, 46), 6))
@@ -172,7 +211,15 @@ def render_lotto_tab():
 
 
 def render_debugging_tab():
-    st.title("비전공자를 위한 파이썬 코드 리뷰어 및 디버깅 툴")
+    st.markdown(
+        """
+        <div class="page-title">
+            <div class="page-logo debug-logo">🛠️</div>
+            <h1>비전공자를 위한 파이썬 코드 리뷰어 및 디버깅 툴</h1>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     goal = st.text_input(
         "이 코드로 무엇을 하고 싶나요?",
