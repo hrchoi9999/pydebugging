@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 import random
+from zoneinfo import ZoneInfo
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -184,7 +185,7 @@ def render_lotto_tab():
 
     if st.button("로또 번호 생성", type="primary"):
         numbers = sorted(random.sample(range(1, 46), 6))
-        created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        created_at = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d %H:%M:%S KST")
         st.session_state.lotto_history.insert(
             0,
             {
