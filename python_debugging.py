@@ -32,11 +32,12 @@ st.markdown(
         font-weight: 800;
         box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
     }
-    .ball-yellow { background: #f2b705; }
-    .ball-blue { background: #2f80ed; }
-    .ball-red { background: #eb5757; }
-    .ball-gray { background: #828282; }
-    .ball-green { background: #27ae60; }
+    .ball-1 { background: #f2b705; }
+    .ball-2 { background: #2f80ed; }
+    .ball-3 { background: #eb5757; }
+    .ball-4 { background: #27ae60; }
+    .ball-5 { background: #9b51e0; }
+    .ball-6 { background: #f2994a; }
     .history-item {
         padding: 12px 0;
         border-bottom: 1px solid rgba(128, 128, 128, 0.25);
@@ -157,22 +158,10 @@ def make_vibe_prompt(code, goal, error_message):
 """
 
 
-def get_ball_class(number):
-    if number <= 10:
-        return "ball-yellow"
-    if number <= 20:
-        return "ball-blue"
-    if number <= 30:
-        return "ball-red"
-    if number <= 40:
-        return "ball-gray"
-    return "ball-green"
-
-
 def render_lotto_numbers(numbers):
     balls = "".join(
-        f'<span class="lotto-ball {get_ball_class(number)}">{number}</span>'
-        for number in numbers
+        f'<span class="lotto-ball ball-{index}">{number}</span>'
+        for index, number in enumerate(numbers, start=1)
     )
     st.markdown(f'<div class="lotto-wrap">{balls}</div>', unsafe_allow_html=True)
 
