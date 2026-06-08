@@ -41,6 +41,15 @@ st.markdown(
         padding: 12px 0;
         border-bottom: 1px solid rgba(128, 128, 128, 0.25);
     }
+    div[role="tablist"] button p {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+    }
+    div[role="tablist"] button {
+        min-height: 72px;
+        padding: 12px 22px;
+    }
     .page-title {
         display: flex;
         align-items: center;
@@ -56,13 +65,16 @@ st.markdown(
         justify-content: center;
         font-size: 30px;
         color: white;
+        background: white;
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
     }
-    .lotto-logo {
-        background: linear-gradient(135deg, #f2b705, #eb5757);
+    .page-logo img {
+        max-width: 88%;
+        max-height: 88%;
+        object-fit: contain;
     }
-    .debug-logo {
-        background: linear-gradient(135deg, #2f80ed, #27ae60);
+    .wide-logo {
+        width: 118px;
     }
     .page-title h1 {
         margin: 0;
@@ -175,7 +187,9 @@ def render_lotto_tab():
     st.markdown(
         """
         <div class="page-title">
-            <div class="page-logo lotto-logo">🎟️</div>
+            <div class="page-logo wide-logo">
+                <img src="https://www.dhlottery.co.kr/resources/img/images/img-draw-hLogo01.svg" alt="로또6/45 로고">
+            </div>
             <h1>로또 6/45 생성기</h1>
         </div>
         """,
@@ -214,7 +228,9 @@ def render_debugging_tab():
     st.markdown(
         """
         <div class="page-title">
-            <div class="page-logo debug-logo">🛠️</div>
+            <div class="page-logo wide-logo">
+                <img src="https://www.python.org/static/community_logos/python-logo.png" alt="Python 로고">
+            </div>
             <h1>비전공자를 위한 파이썬 코드 리뷰어 및 디버깅 툴</h1>
         </div>
         """,
